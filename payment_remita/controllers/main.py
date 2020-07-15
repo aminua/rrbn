@@ -122,7 +122,7 @@ class RemitaPayment(http.Controller):
                                 'merchant_id': post.get('merchantId'),  # get the merchant Id from the post object above
                                 'hash': api_hash,  # use the api hash generated above
                                 'rrr': response.get('RRR'),  # get RRR from the response from the api endpoint
-                                'response_url': "http://localhost:8069/payment/remita/return"  # get the response url
+                                'response_url': "http://164.90.184.171:8069/payment/remita/return"  # get the response url
                             })
                     else:
                         response = response.json()
