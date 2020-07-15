@@ -1,0 +1,59 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+    <!--
+    <record model="ir.ui.view" id="treasury_books.list">
+      <field name="name">treasury_books list</field>
+      <field name="model">treasury_books.treasury_books</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </tree>
+      </field>
+    </record>
+    -->
+
+    <!-- actions opening views on models -->
+    <!--
+    <record model="ir.actions.act_window" id="treasury_books.action_window">
+      <field name="name">treasury_books window</field>
+      <field name="res_model">treasury_books.treasury_books</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    -->
+
+    <!-- server action to the one above -->
+    <!--
+    <record model="ir.actions.server" id="treasury_books.action_server">
+      <field name="name">treasury_books server</field>
+      <field name="model_id" ref="model_treasury_books_treasury_books"/>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": self._name,
+        }
+      </field>
+    </record>
+    -->
+
+    <!-- Top menu item -->
+    <!--
+    <menuitem name="treasury_books" id="treasury_books.menu_root"/>
+    -->
+    <!-- menu categories -->
+    <!--
+    <menuitem name="Menu 1" id="treasury_books.menu_1" parent="treasury_books.menu_root"/>
+    <menuitem name="Menu 2" id="treasury_books.menu_2" parent="treasury_books.menu_root"/>
+    -->
+    <!-- actions -->
+    <!--
+    <menuitem name="List" id="treasury_books.menu_1_list" parent="treasury_books.menu_1"
+              action="treasury_books.action_window"/>
+    <menuitem name="Server to list" id="treasury_books" parent="treasury_books.menu_2"
+              action="treasury_books.action_server"/>
+    -->
+  </data>
+</odoo>

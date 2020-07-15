@@ -1,0 +1,121 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="vetclinic_animals_list">
+      <field name="name">Animals</field>
+      <field name="model">vetclinic.animal</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="birthdate"/>
+          <field name="classification_id"/>
+	  <field name="breed_id"/>
+        </tree>
+      </field>
+    </record>
+
+    
+ <!-- explicit form view definition -->
+
+    <record model="ir.ui.view" id="vetclinic_animals_form_view">
+      <field name="name">vetclinic.animals.form.view</field>
+      <field name="model">vetclinic.animal</field>
+      <field name="arch" type="xml">
+        <form>
+		<group>        
+			<field name="name"/>
+	        	<field name="birthdate"/>
+	        	<field name="classification_id"/>
+			<field name="breed_id"/>
+			<field name="res_partner_id" domain="[('customer', '=', 'True')]"/>
+			<field name="label_ids" widget="many2many_tags"/>
+		</group>
+			<notebook colspan="4">
+				<page string="Animal History">
+					<field name="history" placeholder="Animal history goes here!"/>
+				</page>
+			</notebook>
+        </form>
+      </field>
+    </record>
+
+	  <record id="res_partner_form" model="ir.ui.view" >
+      	<field name="model">res.partner</field>
+      	<field name="inherit_id" ref="base.view_partner_form"/>
+      	<field name="arch" type="xml">
+		<notebook position="inside">
+			<page string="Pets">
+				<field name="animal_ids" colspan="4"/>
+
+			</page>		
+		</notebook>	       	
+	</field>		
+    </record>
+
+
+	<record model="ir.ui.view" id="vetclinic_classification_form_view">
+      <field name="name">vetclinic.classification.form.view</field>
+      <field name="model">vetclinic.classification</field>
+      <field name="arch" type="xml">
+        <form>
+		<group>        
+			<field name="name"/>
+	    </group>
+			<notebook colspan="4">
+				<page string="Breeds History">
+					<field name="breed_ids"/>
+				</page>
+			</notebook>
+        </form>
+      </field>
+    </record>
+
+
+
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="vetclinic_action_animals">
+      <field name="name">Animals</field>
+      <field name="res_model">vetclinic.animal</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    
+     <record model="ir.actions.act_window" id="vetclinic_action_classifications">
+      <field name="name">Classifications</field>
+      <field name="res_model">vetclinic.classification</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+     
+     <record model="ir.actions.act_window" id="vetclinic_action_breeds">
+      <field name="name">Breeds</field>
+      <field name="res_model">vetclinic.breed</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+    
+
+    <!-- Top menu item -->
+
+    <menuitem name="Vet Clinic" id="vetclinic"/>
+
+    <!-- menu categories -->
+
+    <menuitem name="Vet Clinic" id="vetclinic_menu" parent="vetclinic"/>
+
+    <menuitem name="Animals" id="vetclinic_menu_animals" 
+              parent="vetclinic_menu"  
+              action="vetclinic_action_animals"/>
+
+    <menuitem name="Classifications" id="vetclinic_menu_classification" 
+              parent="vetclinic_menu"
+              action="vetclinic_action_classifications"/>
+
+    <menuitem name="Breeds" id="vetclinic_menu_breeds" 
+              parent="vetclinic_menu"  
+              action="vetclinic_action_breeds"/>
+
+  </data>
+</odoo>
